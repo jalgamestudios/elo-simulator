@@ -1,16 +1,21 @@
 <?php
 include 'master.php';
+include 'elements.leaderboard.php';
 createHead("Elo System");
 createBodyStart("Welcome to the Elo System");
 
-echo "<h2>Leaderboard</h2>";
-function printLeaderboard($place, $name, $score){
-	echo "<p>". $place. " ". $name. " ". $score. "</p>";
-}
+echo "<div class='row'>";
 
-foreach (getUsers() as $user){
-printLeaderboard(1, getUserRealName($user), getUserScore($user));
-}
+echo "<div class='four columns value-prop'>";
+buildLeaderboard();
+echo "</div>\n";
+
+echo "<div class='four columns value-prop'>";
+echo "<p>Latest games coming soon</p>";
+echo "</div>\n";
+
+echo "<div class='four columns value-prop'>";
+
 if (isSignedIn())
 {
 	echo "<p>You are signed in</p>";
@@ -21,8 +26,11 @@ if (isSignedIn())
 else
 {
 	echo "<h2>Sign in:</h2>\n";
-	echo "<a href=\"signin.php\">Click here to enter editable mode</a>\n";
+	echo "<a href=\"signin.php\">Click here to enter editable mode</a>";
 }
+
+echo "</div>";
+echo "</div>";
 
 createBodyEnd();
 ?>
