@@ -1,5 +1,9 @@
 <?php
 
+function setUpContentless(){
+	session_start();
+}
+
 function createHead($pageName) {
 	session_start();
 	echo "<!DOCTYPE html>\n";
