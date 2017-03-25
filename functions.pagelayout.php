@@ -17,7 +17,9 @@ function createHead($pageName) {
 function createBodyStart($title) {
 	echo "<body>\n";
 	echo "<div class='container'>";
+	echo "<hr />";
 	echo "<h1>".$title."</h1>\n";
+	echo "<hr />";
 }
 
 function createBodyEnd() {
