@@ -16,6 +16,7 @@ if (isSignedIn())
 	echo "<p>You are signed in</p>";
 	echo "<p><a href=\"createuser.php\">Create new user</a></h>";
 	echo "<p><a href=\"creategame.php\">Log a game</a></h>";
+	echo "<p><a href=\"signout.php\">Sign out</a></h>";
 }
 else
 {
