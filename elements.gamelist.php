@@ -43,24 +43,9 @@ function printGame($gameID){
 	$estimate = gameEstimate($whiteOldRating, $blackOldRating);
 	$scoreChange = gameScoreChange($estimate, $pointsForWhite, $k);
 	
-	$scoreChangeWhite = "";
-	$scoreChangeBlack = "";
-	if ($scoreChange > 0)
-	{
-		$scoreChangeWhite = "+". intval($scoreChange);
-		$scoreChangeBlack = intval(-$scoreChange);
-	}
-	if ($scoreChange < 0)
-	{
-		$scoreChangeWhite = intval($scoreChange);
-		$scoreChangeBlack = "+". intval(-$scoreChange);
-	}
-	if ($scoreChange == 0)
-	{
-		$scoreChangeWhite = "±0";
-		$scoreChangeBlack = "±0";
-	}
 	
+	$scoreChangeWhite = textGetScoreChangeWhite($scoreChange, 0);
+	$scoreChangeBlack = textGetScoreChangeBlack($scoreChange, 0);
 	
 	echo "<td>";
 	if ($pointsForWhite > 0.5)
@@ -68,7 +53,7 @@ function printGame($gameID){
 	echo $whiteName;
 	if ($pointsForWhite > 0.5)
 		echo "</strong>";
-	echo " (". $whiteOldRating. $scoreChangeWhite.")";
+	echo " (". round($whiteOldRating). $scoreChangeWhite.")";
 	echo "</td>";
 	echo "<td>";
 	if ($pointsForWhite < 0.5)
@@ -76,7 +61,7 @@ function printGame($gameID){
 	echo $blackName;
 	if ($pointsForWhite < 0.5)
 		echo "</strong>";
-	echo " (". $blackOldRating. $scoreChangeBlack.")";
+	echo " (". round($blackOldRating). $scoreChangeBlack.")";
 	echo "</td>";
 	echo "<td>";
 	echo date("d. M; G:i",gameGetDate($gameID));

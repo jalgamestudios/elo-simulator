@@ -29,7 +29,7 @@ function getUserRealName($username){
 }
 function getUserScore($username){
 	$content = file("users/". $username);
-	return intval($content[1]);
+	return floatval($content[1]);
 }
 function setUserScore($username, $score){
 	file_put_contents("users/". $username,

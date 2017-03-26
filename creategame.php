@@ -50,7 +50,7 @@ if (isSignedIn())
 	
 	echo "<div class='four columns'>";
 	echo "<label for='k'>k</label>";
-	echo "<input type=\"number\" name=\"k\" value=\"20\">";
+	echo "<input type=\"number\" name=\"k\" value=\"40\">";
 	echo "<p>The higher k, the more the game influences the score</p>";
 	echo "</div>";
 	echo "</div>";

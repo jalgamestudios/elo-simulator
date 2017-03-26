@@ -44,7 +44,7 @@ function printLeaderboard($place, $name, $score){
 	echo "<tr>";
 	echo "<td>". $place. "</td>";
 	echo "<td>". $name. "</td>";
-	echo "<td>". $score. "</td>";
+	echo "<td>". round($score, 0). "</td>";
 	echo "</tr>";
 }
 ?>

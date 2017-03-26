@@ -14,6 +14,10 @@ if (isSignedIn())
 	$black = $_POST["black"];
 	$winner = $_POST["winner"];
 	
+	$k = $_POST["k"];
+	
+	$scoreChange = gameScoreChange($estimate, $winner, $k);
+	
 	$result = createGame(
 		$_POST["white"],
 		$_POST["black"],
@@ -25,13 +29,21 @@ if (isSignedIn())
 		echo "<div class='row'>";
 		echo "<div class='six columns'>";
 		echo "<h2>Before the game:</h2>";
-		echo "<p><strong>White: </strong>". $eloWhite. "</p>";
-		echo "<p><strong>Black: </strong>". $eloBlack. "</p>";
+		echo "<p><strong>White: </strong>". round($eloWhite, 1). "</p>";
+		echo "<p><strong>Black: </strong>". round($eloBlack, 1). "</p>";
 		
 		echo "<label>Chances of winning:</label>";
 		echo "<div style='height: 24px; background-color: black; width: 90%; padding: 3px'>";
-		echo "<div style='height: 24px; float: left; background-color: white; width: ".round($estimate * 100) ."%'>".round($estimate * 100) ."%</div>";
-		echo "<div style='height: 24px; float: right; background-color: black; text-align: right; font-color: white; width: ".round(100 -$estimate * 100) ."%'><a style='color: white;'>".round(100 - $estimate * 100) ."%</a></div>";
+		echo "<div style='height: 24px; float: left; background-color: white; width: ".round($estimate * 100, 1) ."%'>";
+		if ($winner > 0.5)
+			echo "🏆";
+		echo round($estimate * 100, 1). "%";
+		echo "</div>";
+		echo "<div style='height: 24px; float: right; background-color: black; text-align: right; font-color: white; width: ".round(100 -$estimate * 100, 1) ."%'><a style='color: white;'>";
+		echo round(100 - $estimate * 100, 1) ."%";
+		if ($winner < 0.5)
+			echo "🏆";
+		echo "</a></div>";
 		echo "</div>";
 		echo "<p></p>"; // Not the cleanest way, but this helps with spacing :)
 		
@@ -41,6 +53,15 @@ if (isSignedIn())
 		
 		echo "<div>";
 		echo "<h2>After the game</h2>";
+		
+		echo "<p><strong>White: </strong>";
+		echo round($eloWhite, 1). textGetScoreChangeWhite($scoreChange, 1);
+		echo "=". floatval(round($eloWhite + $scoreChange, 1)). "</p>";
+		
+		echo "<p><strong>Black: </strong>";
+		echo round($eloWhite, 1). textGetScoreChangeBlack($scoreChange, 1);
+		echo "=". floatval(round($eloWhite - $scoreChange, 1)). "</p>";
+		
 		echo "</div>";
 		echo "</div>";
 		

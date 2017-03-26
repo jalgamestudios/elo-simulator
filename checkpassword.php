@@ -19,9 +19,9 @@ setUpContentless();
 	}
 	else
 	{
-		createHead("Password Check");
+		createHead("Password Configuration");
 
-		createBodyStart("Password Check");
+		createBodyStart("Password Configuration");
 		echo "<p>The password is not configured. <a href=\"signin.php\">Click here to set the password.</a></p>";
 		createBodyEnd();
 	}

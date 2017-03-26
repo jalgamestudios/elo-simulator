@@ -68,7 +68,7 @@ function gameGetBlack($gameID){
 }
 function gameGetPointsForWhite($gameID){
 	$content = file("games/". $gameID);
-	return intval($content[2]);
+	return floatval($content[2]);
 }
 function gameGetK($gameID){
 	$content = file("games/". $gameID);
@@ -76,14 +76,29 @@ function gameGetK($gameID){
 }
 function gameGetWhiteScore($gameID){
 	$content = file("games/". $gameID);
-	return intval($content[4]);
+	return floatval($content[4]);
 }
 function gameGetBlackScore($gameID){
 	$content = file("games/". $gameID);
-	return intval($content[5]);
+	return floatval($content[5]);
 }
 function gameGetDate($gameID){
 	return filemtime("games/". $gameID);
+}
+
+function textGetScoreChangeWhite($scoreChange, $precision){
+	if ($scoreChange > 0)
+		return "+".floatval(round($scoreChange, $precision));
+	if ($scoreChange < 0)
+		return  floatval(round($scoreChange, $precision));
+	return "±0";
+}
+function textGetScoreChangeBlack($scoreChange, $precision){
+	if ($scoreChange > 0)
+		return floatval(round(-$scoreChange, $precision));
+	if ($scoreChange < 0)
+		return  "+".floatval(round(-$scoreChange, $precision));
+	return "±0";
 }
 
 function getGames() {
