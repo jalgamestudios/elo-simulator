@@ -42,6 +42,14 @@ function createGame($white, $black, $pointsForWhite, $k) {
 	return $filename;
 }
 
+function createGameGetErrorString($errorCode) {
+	if (errorCode == 0)
+		return "Game created successfully";
+	if (errorCode == 1)
+		return "Game already exists. This should never be the case. Something must have gone wrong.";
+	return "Unknown error";
+}
+
 function gameEstimate($eloA, $eloB){
 	return 1 / (1 + pow(10, ($eloB - $eloA) / 400));
 }
@@ -50,12 +58,45 @@ function gameScoreChange($estimate, $actualPoints, $k){
 	return $k * ($actualPoints - $estimate);
 }
 
-function createGameGetErrorString($errorCode) {
-	if (errorCode == 0)
-		return "Game created successfully";
-	if (errorCode == 1)
-		return "Game already exists. This should never be the case. Something must have gone wrong.";
-	return "Unknown error";
+function gameGetWhite($gameID){
+	$content = file("games/". $gameID);
+	return str_replace("\n", "", $content[0]);
+}
+function gameGetBlack($gameID){
+	$content = file("games/". $gameID);
+	return str_replace("\n", "", $content[1]);
+}
+function gameGetPointsForWhite($gameID){
+	$content = file("games/". $gameID);
+	return intval($content[2]);
+}
+function gameGetK($gameID){
+	$content = file("games/". $gameID);
+	return intval($content[3]);
+}
+function gameGetWhiteScore($gameID){
+	$content = file("games/". $gameID);
+	return intval($content[4]);
+}
+function gameGetBlackScore($gameID){
+	$content = file("games/". $gameID);
+	return intval($content[5]);
+}
+
+function getGames() {
+	$games = array();
+	if (!is_dir("games"))
+		return $games;
+	$dir = new DirectoryIterator("games/");
+	foreach ($dir as $fileinfo)
+	{
+		if (!$fileinfo->isDot())
+		{
+			$game = $fileinfo->getFilename();
+			$games[] = $game;
+		}
+	}
+	return $games;
 }
 
 ?>

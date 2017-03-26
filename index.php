@@ -1,6 +1,7 @@
 <?php
 include 'master.php';
 include 'elements.leaderboard.php';
+include 'elements.gamelist.php';
 createHead("Elo System");
 createBodyStart("Welcome to the Elo System");
 
@@ -13,7 +14,7 @@ echo "</div>\n";
 
 echo "<div class='four columns value-prop'>";
 echo "<h2>Latest games</h2>";
-echo "<p>Latest games coming soon</p>";
+buildGamelist();
 echo "</div>\n";
 
 echo "<div class='four columns value-prop'>";

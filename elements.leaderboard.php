@@ -2,7 +2,7 @@
 
 function buildLeaderboard()
 {
-	echo "<table style=''>"; //TODO: Figure out what u-full-width does
+	echo "<table style=''>";
 
 	echo "<thead><tr>";
 	echo "<th>#</th>";
