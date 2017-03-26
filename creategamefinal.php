@@ -29,7 +29,7 @@ if (isSignedIn())
 		echo "<p><strong>Black: </strong>". $eloBlack. "</p>";
 		
 		echo "<label>Chances of winning:</label>";
-		echo "<div style='height: 24px; background-color: black; width: 100%; padding: 3px'>";
+		echo "<div style='height: 24px; background-color: black; width: 90%; padding: 3px'>";
 		echo "<div style='height: 24px; float: left; background-color: white; width: ".round($estimate * 100) ."%'>".round($estimate * 100) ."%</div>";
 		echo "<div style='height: 24px; float: right; background-color: black; text-align: right; font-color: white; width: ".round(100 -$estimate * 100) ."%'><a style='color: white;'>".round(100 - $estimate * 100) ."%</a></div>";
 		echo "</div>";
@@ -37,6 +37,10 @@ if (isSignedIn())
 		
 		echo "<p>In the past, ". getUserRealName($white). " won <i>coming soon</i> games and ". getUserRealName($black). " won <i>coming soon</i> games.</p>";
 		
+		echo "</div>";
+		
+		echo "<div>";
+		echo "<h2>After the game</h2>";
 		echo "</div>";
 		echo "</div>";
 		
