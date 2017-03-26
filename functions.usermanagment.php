@@ -37,6 +37,8 @@ function setUserScore($username, $score){
 
 function getUsers() {
 	$users = array();
+	if (!is_dir("users"))
+		return $users;
 	$dir = new DirectoryIterator("users/");
 	foreach ($dir as $fileinfo)
 	{

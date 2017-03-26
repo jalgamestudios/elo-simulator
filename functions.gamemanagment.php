@@ -28,16 +28,11 @@ function createGame($white, $black, $pointsForWhite, $k) {
 	
 	$changeWhite = gameScoreChange($estimate, $pointsForWhite, $k);
 	
-	echo $estimate."\n";
-	echo $changeWhite;
-	
 	$file = $white. "\n". $black. "\n";
 	$file = $file. $pointsForWhite. "\n";
 	$file = $file. $k. "\n";
 	$file = $file. $whiteScore. "\n";
 	$file = $file. $blackScore. "";
-	echo $file;
-	
 	
 	setUserScore($white, $whiteScore + $changeWhite);
 	setUserScore($black, $blackScore - $changeWhite);
