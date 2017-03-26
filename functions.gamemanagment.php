@@ -82,6 +82,9 @@ function gameGetBlackScore($gameID){
 	$content = file("games/". $gameID);
 	return intval($content[5]);
 }
+function gameGetDate($gameID){
+	return filemtime("games/". $gameID);
+}
 
 function getGames() {
 	$games = array();

@@ -78,7 +78,9 @@ function printGame($gameID){
 		echo "</strong>";
 	echo " (". $blackOldRating. $scoreChangeBlack.")";
 	echo "</td>";
-	echo "<td>N/A</td>";
+	echo "<td>";
+	echo date("d. M; G:i",gameGetDate($gameID));
+	echo "</td>";
 	echo "</tr>";
 }
 ?>

@@ -12,12 +12,12 @@ echo "<h2>Leaderboard</h2>";
 buildLeaderboard();
 echo "</div>\n";
 
-echo "<div class='four columns value-prop'>";
+echo "<div class='five columns value-prop'>";
 echo "<h2>Latest games</h2>";
 buildGamelist();
 echo "</div>\n";
 
-echo "<div class='four columns value-prop'>";
+echo "<div class='three columns value-prop'>";
 
 if (isSignedIn())
 {
