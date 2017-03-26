@@ -31,7 +31,7 @@ function buildLeaderboard()
 				$lastScore = $score;
 				$lastCounter = $counter;
 			}
-			printLeaderboard($lastCounter, getUserRealName($username), getUserScore($username));
+			printLeaderboard($lastCounter, $username, getUserRealName($username), getUserScore($username));
 		}
 		$counter++;
 	}
@@ -40,10 +40,10 @@ function buildLeaderboard()
 	echo "</table>";
 }
 
-function printLeaderboard($place, $name, $score){
+function printLeaderboard($place, $username, $name, $score){
 	echo "<tr>";
 	echo "<td>". $place. "</td>";
-	echo "<td>". $name. "</td>";
+	echo "<td><a href='user.php?username=$username'>$name</a></td>";
 	echo "<td>". round($score, 0). "</td>";
 	echo "</tr>";
 }

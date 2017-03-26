@@ -21,6 +21,10 @@ function createUserGetErrorString($errorCode) {
 		return "User already exists";
 }
 
+function userExists($username){
+	return file_exists("users/". $username);
+}
+
 function getUserRealName($username){
 	if (!file_exists("users/". $username))
 		echo "<p>Error: Unknown User: ". $username. "</p>";
