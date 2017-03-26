@@ -22,6 +22,8 @@ function createUserGetErrorString($errorCode) {
 }
 
 function getUserRealName($username){
+	if (!file_exists("users/". $username))
+		echo "<p>Error: Unknown User: ". $username. "</p>";
 	$content = file("users/". $username);
 	return str_replace("\n", "", $content[0]);
 }

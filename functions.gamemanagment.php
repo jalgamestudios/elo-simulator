@@ -99,7 +99,7 @@ function getGames() {
 			$games[] = $game;
 		}
 	}
-	return $games;
+	return array_reverse($games);
 }
 
 ?>
