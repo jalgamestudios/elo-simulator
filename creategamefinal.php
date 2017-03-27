@@ -59,8 +59,8 @@ if (isSignedIn())
 		echo "=". floatval(round($eloWhite + $scoreChange, 1)). "</p>";
 		
 		echo "<p><strong>Black: </strong>";
-		echo round($eloWhite, 1). textGetScoreChangeBlack($scoreChange, 1);
-		echo "=". floatval(round($eloWhite - $scoreChange, 1)). "</p>";
+		echo round($eloBlack, 1). textGetScoreChangeBlack($scoreChange, 1);
+		echo "=". floatval(round($eloBlack - $scoreChange, 1)). "</p>";
 		
 		echo "</div>";
 		echo "</div>";
